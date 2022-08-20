@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "general_account",
+    "structs",
     "sqlite",
     "window",
     "main_space"
