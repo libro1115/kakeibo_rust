@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "general_account",
+    "sqlite",
+    "window",
+    "main_space"
+]
