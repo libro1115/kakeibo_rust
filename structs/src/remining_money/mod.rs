@@ -1,11 +1,11 @@
 #![allow(dead_code)]
 mod module;
-use std::collections::BTreeMap;
+use multimap::MultiMap;
 use super::cash_history::{CashHistory, Badget};
 use super::day::Day;
 struct ReminingMoney{
-    logs:BTreeMap<Day, CashHistory>,
-    remining_money:BTreeMap<Badget,u64>,
+    logs:MultiMap<Day, CashHistory>,
+    remining_money:MultiMap<Badget,u64>,
 }
 
 #[test]
