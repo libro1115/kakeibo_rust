@@ -18,7 +18,7 @@ pub(crate)enum Usage{
     Spending = 1,
 }
 //予算枠
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Hash,PartialEq, Eq)]
 pub enum Badget{
     None,
 }
