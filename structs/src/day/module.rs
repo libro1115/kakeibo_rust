@@ -1,6 +1,6 @@
 use super::*;
 use chrono::{Local,Weekday,Datelike,TimeZone};
-use std::cmp::{PartialOrd, Ordering};
+use std::cmp::{Ord, Ordering};
 //public
 #[allow(dead_code)]
 impl Day{
@@ -24,30 +24,34 @@ impl PartialEq for Day{
         self.day == other.day
     }
 }
+impl  Eq for Day {}
 //比較演算子
-impl PartialOrd for Day{
-    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+impl Ord for Day{
+    fn cmp(&self, other:&Self)->Ordering{
         if self.year > other.year{
-            return Some(Ordering::Greater)
+            return Ordering::Greater
         }
         else if self.year < other.year{
-            return Some(Ordering::Less)
+            return Ordering::Less
         }
         if self.month > other.month{
-            return Some(Ordering::Greater)
+            return Ordering::Greater
         }
         else if self.month < other.month{
-            return Some(Ordering::Less)
+            return Ordering::Less
         }
         if self.day < other.day{
-            Some(Ordering::Greater)
+            return Ordering::Greater
         }
         else if self.month > other.month{
-            Some(Ordering::Less)
+            return Ordering::Less
         }
-        else if self == other{
-            Some(Ordering::Equal)
-        }
-        else {None}
+        Ordering::Equal
+        
+    }
+}
+impl PartialOrd for Day{
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
     }
 }
