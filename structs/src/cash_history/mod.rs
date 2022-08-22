@@ -2,7 +2,7 @@
 mod module;
 use super::day::Day;
 use bitflags::bitflags;
-struct CashHistory{
+pub struct CashHistory{
     expenses:u64,
     usage:Usage,
     badget:Badget,
