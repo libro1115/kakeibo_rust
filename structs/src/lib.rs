@@ -1,5 +1,6 @@
 mod day;
 mod cash_history;
+mod remining_money;
 #[cfg(test)]
 mod tests {
     #[test]
