@@ -2,20 +2,23 @@
 mod module;
 use super::day::Day;
 use bitflags::bitflags;
+#[derive(Clone)]
 pub struct CashHistory{
     expenses:u64,
     usage:Usage,
     badget:Badget,
     tag:MejorTag,
-    memo:String,
+    pub memo:String,
     day:Day,
 }
 //収支どちらか
+#[derive(Clone, Copy, PartialEq)]
 pub(crate)enum Usage{
     Income = 0,
     Spending = 1,
 }
 //予算枠
+#[derive(Clone, Copy)]
 pub enum Badget{
     None,
 }
