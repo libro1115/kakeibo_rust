@@ -20,7 +20,21 @@ pub(crate)enum Usage{
 //予算枠
 #[derive(Clone, Copy, Hash,PartialEq, Eq)]
 pub enum Badget{
-    None,
+    None = -1,
+    ///週予算
+    Weekly = 0,
+    ///月予算
+    Monthly,
+    /// 2か月予算
+    TwoMonthly,
+    /// 3か月予算
+    ThreeMonthly,
+    /// 4か月予算
+    ForuMonthly,
+    /// 半年予算
+    HalfAnnual,
+    ///年予算
+    Annual,
 }
 //タグ
 bitflags!{
