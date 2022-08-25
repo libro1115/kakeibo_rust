@@ -13,7 +13,7 @@ pub struct CashHistory{
 }
 //収支どちらか
 #[derive(Clone, Copy, PartialEq)]
-pub(crate)enum Usage{
+pub enum Usage{
     Income = 0,
     Spending = 1,
 }

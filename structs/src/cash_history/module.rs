@@ -20,7 +20,7 @@ impl CashHistory{
     }
     ///動かした額の参照
     pub fn expenses(&self)->i128{
-        if(self.usage == Usage::Income){
+        if self.usage == Usage::Income{
             self.expenses as i128
         }
         else{
