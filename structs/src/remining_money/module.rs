@@ -26,10 +26,10 @@ impl ReminingMoney{
         }
     }
     ///指定日のログを参照
-    pub fn get_logs(&self, day:Day)->Vec<CashHistory>{
+    pub fn get_logs(&self, day:Day)->Option<&Vec<CashHistory>>{
         match self.logs.get(&day){
-            Some(i)=>{return i.clone();},
-            _=>{return Vec::new();}
+            Some(i)=>{return Some(i);},
+            _=>{return None;}
         }
     }
 }
