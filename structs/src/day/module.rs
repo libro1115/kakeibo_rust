@@ -1,53 +1,53 @@
 use super::*;
-use chrono::{Local,Weekday,Datelike,TimeZone};
+use chrono::{Weekday,Datelike};
 use std::cmp::{Ord, Ordering};
 //public
 #[allow(dead_code)]
 impl Day{
     ///指定日で作成
-    pub fn new(y:u16,m:u8,d:u8)->Self{
-        Day {week:Day::get_week(&y, &m, &d), year: y, month: m, day: d}
+    pub fn new(y:i32,m:u32,d:u32)->Self{
+        Day {date:NaiveDate::from_ymd(y, m, d)}
+    }
+    pub fn from_ce(ce:i32)->Self{
+        Day{date:NaiveDate::from_num_days_from_ce(ce)}
+    }
+    ///年の取得
+    pub fn year(&self)->i32{
+        self.date.year()
+    }
+    ///月の取得
+    pub fn month(&self)->u32{
+        self.date.month()
+    }
+    ///日の取得
+    pub fn day(&self)->u32{
+        self.date.day()
+    }
+    ///曜日の取得
+    pub fn week(&self)->Weekday{
+        self.date.weekday()
+    }
+    ///1年1月1日からの年月
+    pub fn days_from_ce(&self)->i32{
+        self.date.num_days_from_ce()
     }
 }
 
 //protected
 impl Day{
-    fn get_week(y:&u16, m:&u8,d:&u8)->Weekday{
-        Local.ymd(y.clone() as i32, m.clone() as u32, d.clone() as u32).weekday()
-    }
+
 }
 //==演算子
 impl PartialEq for Day{
     fn eq(&self, other: &Self) -> bool {
-        self.year == other.year &&
-        self.month == other.month &&
-        self.day == other.day
+        self.days_from_ce() == other.days_from_ce()
     }
 }
 impl  Eq for Day {}
 //比較演算子
 impl Ord for Day{
     fn cmp(&self, other:&Self)->Ordering{
-        if self.year > other.year{
-            return Ordering::Greater
-        }
-        else if self.year < other.year{
-            return Ordering::Less
-        }
-        if self.month > other.month{
-            return Ordering::Greater
-        }
-        else if self.month < other.month{
-            return Ordering::Less
-        }
-        if self.day < other.day{
-            return Ordering::Greater
-        }
-        else if self.month > other.month{
-            return Ordering::Less
-        }
-        Ordering::Equal
-        
+        self.days_from_ce().cmp(&other.days_from_ce())        
     }
 }
 impl PartialOrd for Day{
