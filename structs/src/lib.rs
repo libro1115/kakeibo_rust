@@ -1,2 +1,2 @@
 pub mod day;
-mod cash_history;
+pub mod cash_history;
