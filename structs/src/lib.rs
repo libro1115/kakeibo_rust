@@ -1,10 +1,2 @@
-mod day;
+pub mod day;
 mod cash_history;
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
-}
