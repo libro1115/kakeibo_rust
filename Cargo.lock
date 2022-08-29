@@ -78,6 +78,7 @@ name = "databases"
 version = "0.1.0"
 dependencies = [
  "rusqlite",
+ "structs",
 ]
 
 [[package]]
