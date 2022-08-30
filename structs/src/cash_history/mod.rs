@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 mod module;
-use super::day::Day;
+use super::date::Date;
 use bitflags::bitflags;
 #[derive(Clone)]
 pub struct CashHistory{
@@ -9,7 +9,7 @@ pub struct CashHistory{
     badget:Badget,
     tag:MejorTag,
     pub memo:String,
-    day:Day,
+    day:Date,
 }
 //収支どちらか
 #[derive(Clone, Copy, PartialEq)]
@@ -45,7 +45,7 @@ bitflags!{
 
 #[test]
 fn cash_history_test(){
-    let day = Day::new(2022,8,21);
+    let day = Date::new(2022,8,21);
     let income = CashHistory::income(500, day, Badget::None, String::new());
     assert_eq!(income.tag, MejorTag::NONE);
 
