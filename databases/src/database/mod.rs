@@ -6,12 +6,13 @@ use structs::{cash_history::{CashHistory, Badget}, date::Date};
 
 pub struct Database{
     access_point:Connection,
+    user:String,
 }
 
 
 #[test]
 fn database_test(){
-    let db = Database::connect();
+    let db = Database::connect("user1".to_string());
     db.create_table();
     let log = CashHistory::income(1000, Date::new(2022,1,1), Badget::Weekly, "memo".to_string());
     match db.save_log(&log){
