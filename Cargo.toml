@@ -1,7 +1,7 @@
 [workspace]
 members = [
     "structs",
-    "sqlite",
+    "databases",
     "window",
     "main_space"
 ]

@@ -26,7 +26,7 @@ impl ReminingMoney{
         }
     }
     ///指定日のログを参照
-    pub fn get_logs(&self, day:Day)->Option<&Vec<CashHistory>>{
+    pub fn get_logs(&self, day:Date)->Option<&Vec<CashHistory>>{
         match self.logs.get(&day){
             Some(i)=>{return Some(i);},
             _=>{return None;}

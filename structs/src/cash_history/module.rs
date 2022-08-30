@@ -7,7 +7,7 @@ impl CashHistory{
     /// day:日にち
     /// badget:予算枠
     /// memo:メモ
-    pub fn income(expenses_:u64, day_:Day, badget_:Badget, memo_:String)->Self{
+    pub fn income(expenses_:u64, day_:Date, badget_:Badget, memo_:String)->Self{
         CashHistory{usage:Usage::Income, expenses:expenses_, day:day_, tag:MejorTag::NONE, badget:badget_, memo:memo_}
     }
     ///支出を作成
@@ -15,7 +15,7 @@ impl CashHistory{
     /// day:日にち
     /// badget:予算枠
     /// memo:メモ
-    pub fn spending(expenses_:u64, day_:Day,badget_:Badget, memo_:String)->Self{
+    pub fn spending(expenses_:u64, day_:Date,badget_:Badget, memo_:String)->Self{
         CashHistory{usage:Usage::Spending, expenses:expenses_, day:day_, tag:MejorTag::NONE, badget:badget_, memo:memo_}
     }
     ///動かした額の参照
@@ -28,7 +28,7 @@ impl CashHistory{
         }
     }
     ///日にち参照
-    pub fn day(&self)->Day{
+    pub fn day(&self)->Date{
         self.day.clone()
     }
     ///収支属性参照

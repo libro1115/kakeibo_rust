@@ -2,16 +2,16 @@
 mod module;
 use std::collections::{HashMap, BTreeMap};
 use super::cash_history::{CashHistory, Badget};
-use super::day::Day;
+use super::date::Date;
 struct ReminingMoney{
-    logs:BTreeMap<Day, Vec<CashHistory>>,
+    logs:BTreeMap<Date, Vec<CashHistory>>,
     remining_money:HashMap<Badget,i128>,
 }
 
 #[test]
 fn remining_money_test(){
     let mut rem = ReminingMoney::new();
-    let day = Day::new(2022, 1, 1);
+    let day = Date::new(2022, 1, 1);
     let log1 = CashHistory::income(1000, 
                                                 day,
                                                  Badget::Monthly, 
@@ -55,7 +55,7 @@ fn remining_money_test(){
        None=>{panic!("err 55");}
     }
     println!("XXX");
-    match rem.get_logs(Day::new(2021,1,1)){
+    match rem.get_logs(Date::new(2021,1,1)){
         Some(v)=>{
             println!("A");
             if v.len() != 0{panic!("err 61");}
