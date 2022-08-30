@@ -3,13 +3,13 @@ use chrono::{Weekday,Datelike};
 use std::cmp::{Ord, Ordering};
 //public
 #[allow(dead_code)]
-impl Day{
+impl Date{
     ///指定日で作成
     pub fn new(y:i32,m:u32,d:u32)->Self{
-        Day {date:NaiveDate::from_ymd(y, m, d)}
+        Date {date:NaiveDate::from_ymd(y, m, d)}
     }
     pub fn from_ce(ce:i32)->Self{
-        Day{date:NaiveDate::from_num_days_from_ce(ce)}
+        Date{date:NaiveDate::from_num_days_from_ce(ce)}
     }
     ///年の取得
     pub fn year(&self)->i32{
@@ -34,23 +34,23 @@ impl Day{
 }
 
 //protected
-impl Day{
+impl Date{
 
 }
 //==演算子
-impl PartialEq for Day{
+impl PartialEq for Date{
     fn eq(&self, other: &Self) -> bool {
         self.days_from_ce() == other.days_from_ce()
     }
 }
-impl  Eq for Day {}
+impl  Eq for Date {}
 //比較演算子
-impl Ord for Day{
+impl Ord for Date{
     fn cmp(&self, other:&Self)->Ordering{
         self.days_from_ce().cmp(&other.days_from_ce())        
     }
 }
-impl PartialOrd for Day{
+impl PartialOrd for Date{
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         Some(self.cmp(other))
     }
