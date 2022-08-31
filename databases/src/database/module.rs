@@ -1,6 +1,6 @@
 use super::Database;
-use rusqlite::{params, Connection, Error};
-use structs::cash_history::CashHistory;
+use rusqlite::{Connection, Error};
+use structs::{cash_history::CashHistory};
 
 const DB_PATH:&str = "./kakeibo_rust.sqlite3";
 //public
@@ -10,14 +10,11 @@ impl Database {
         Database{access_point: Self::connect_database(),
                     user:user_}
     }
+    ///ログをデータベースに保存
     pub fn save_log(&self, log:&CashHistory)->Result<usize,Error>{
         self.access_point.execute(format!("INSERT INTO {} VALUES($1,$2,$3,$4,$5,$6,$7,$8,?9)"
         ,&self.user).as_str(),         
-        params![
-            &log.day().days_from_ce(), &log.day().year(), &log.day().month(), &log.day().day(),
-         log.usage() as i32, log.expenses() as i32, log.badget() as i32,
-         &log.tag().bits(), &log.memo
-        ])
+       Self::create_log_params(&log))
     }
 }
 
@@ -52,6 +49,14 @@ impl  Database {
         ){
             Ok(_)=>{},
             Err(e)=>{println!("create table error :{}",e.to_string());}
-        };
+        };    
+    }
+    ///パラメータの作成
+    fn create_log_params(log:&CashHistory)->
+    (i32, i32, u32, u32, i32, i32, i32, u64, String)
+    {
+        (log.day().days_from_ce(), log.day().year(), log.day().month(), log.day().day(),
+         log.usage() as i32, log.expenses() as i32, log.badget() as i32,
+         log.tag().bits(), log.memo.clone())
     }
 }
