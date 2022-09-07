@@ -3,5 +3,6 @@ members = [
     "structs",
     "sqlite",
     "window",
-    "main_space"
+    "main_space",
+    "gui/src-tauri"
 ]
