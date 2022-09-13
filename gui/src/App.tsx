@@ -39,6 +39,28 @@ function App() {
           <button type="button" onClick={() => greet()}>
             Greet
           </button>
+          <div>
+            <input 
+            type="radio"
+            id="income"
+            name="usage"
+            value={"income"}
+            />
+            <label>収入</label>
+          </div>
+          <div>
+            <input 
+            type="radio"
+            id="spending"
+            name="usage"
+            value={"spending"}
+            checked
+            />
+            <label>支出</label>
+          </div><input id = "execute"
+          placeholder="金額"
+          maxLength={15} 
+          />
         </div>
       </div>
       <p>{greetMsg}</p>
