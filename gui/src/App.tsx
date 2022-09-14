@@ -61,6 +61,18 @@ function App() {
           placeholder="金額"
           maxLength={15} 
           />
+          <div className="badget">
+            <select name="badget">
+              <option value={"week"}>週予算</option>
+              <option value={"month"}>月予算</option>
+              <option value={"two_month"}>2か月予算</option>
+              <option value={"three_month"}>3か月予算</option>
+              <option value={"four_month"}>4か月予算</option>
+              <option value={"harf_annual"}>半年予算</option>
+              <option value={"annual"}>年予算</option>
+            </select>
+            <p id="badget">残予算額：{}</p>
+          </div>
         </div>
       </div>
       <p>{greetMsg}</p>
