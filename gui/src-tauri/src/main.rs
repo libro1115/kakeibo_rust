@@ -3,6 +3,10 @@
     windows_subsystem = "windows"
 )]
 
+use structs::{cash_history::{Badget}};
+
+
+
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
