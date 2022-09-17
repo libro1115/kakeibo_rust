@@ -39,6 +39,10 @@ impl CashHistory{
     pub fn badget(&self)->Badget{
         self.badget.clone()
     }
+    ///タグをintから設定
+    pub fn set_tag(&mut self, tag:u64){
+        self.tag.bits = tag;
+    }
     ///タグを加算
     pub fn add_tag(&mut self, tag_:MejorTag){
         self.tag |= tag_;
@@ -58,4 +62,27 @@ impl CashHistory{
 //protected
 impl CashHistory{
 
+}
+impl  Badget {
+    pub fn from_int(i:u64)->Self{
+        match i{
+            0=>{return Badget::Weekly;}
+            1=>{return Badget::Monthly;}
+            2=>{return Badget::TwoMonthly;}
+            3=>{return Badget::ThreeMonthly;}
+            4=>{return Badget::ForuMonthly;}
+            5=>{return Badget::HalfAnnual;}
+            6=>{return Badget::Annual;}
+            _=>{return Badget::None;}
+        }
+    }
+}
+
+impl  Usage {
+    pub fn from_int(i:u64)->Self{
+        match i{
+            0=>{return Usage::Income;}
+            _=>{return Usage::Spending;}
+        }
+    }
 }

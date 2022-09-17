@@ -2,7 +2,7 @@
 mod module;
 use super::date::Date;
 use bitflags::bitflags;
-#[derive(Clone)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct CashHistory{
     expenses:u64,
     usage:Usage,
@@ -12,13 +12,13 @@ pub struct CashHistory{
     day:Date,
 }
 //収支どちらか
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Usage{
     Income = 0,
     Spending = 1,
 }
 //予算枠
-#[derive(Clone, Copy, Hash,PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, Hash,PartialEq, Eq)]
 pub enum Badget{
     None = -1,
     ///週予算
@@ -36,6 +36,7 @@ pub enum Badget{
     ///年予算
     Annual,
 }
+
 //タグ
 bitflags!{
     pub struct MejorTag:u64{
