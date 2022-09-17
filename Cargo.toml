@@ -3,5 +3,6 @@ members = [
     "structs",
     "databases",
     "window",
-    "main_space"
+    "main_space",
+    "gui/src-tauri"
 ]

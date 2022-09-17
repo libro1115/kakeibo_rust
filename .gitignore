@@ -1,1 +1,25 @@
 /target
+# Logs
+gui/logs
+gui/*.log
+gui/npm-debug.log*
+gui/yarn-debug.log*
+gui/yarn-error.log*
+gui/pnpm-debug.log*
+gui/lerna-debug.log*
+
+gui/node_modules
+gui/dist
+gui/dist-ssr
+gui/*.local
+
+# Editor directories and files
+gui/.vscode/*
+gui/!.vscode/extensions.json
+gui/.idea
+gui/.DS_Store
+gui/*.suo
+gui/*.ntvs*
+gui/*.njsproj
+gui/*.sln
+gui/*.sw?
